@@ -28,22 +28,6 @@ const SideBar = ({ menuOpen, setMenuOpen }) => {
           <li className={`tablink ${location.pathname.includes('user') ? 'active-side' : null}`} onClick={() => { navigate('/howToPlay'); setMenuOpen(false) }}>
             How To Play  </li>
 
-          {/* <li className={`tablink ${location.pathname.includes('shorts') ? 'active-side' : null}`} onClick={() => { navigate('/shorts'); setMenuOpen(false) }}>
-            Shorts  </li>
-          <li className={`tablink ${location.pathname.includes('association') ? 'active-side' : null}`} onClick={() => { navigate('/association'); setMenuOpen(false) }}>
-            Association  </li>
-          <li className={`tablink ${location.pathname.includes('tournament') ? 'active-side' : null}`} onClick={() => { navigate('/tournament'); setMenuOpen(false) }}>
-            Tournament  </li>
-
-          <li className={`tablink ${location.pathname.includes('matches') ? 'active-side' : null}`} onClick={() => { navigate('/matches'); setMenuOpen(false) }}>
-            Matches  </li>
-
-          <li className={`tablink ${location.pathname.includes('notification') ? 'active-side' : null}`} onClick={() => { navigate('/notification'); setMenuOpen(false) }}>
-            Notification  </li> */}
-
-
-
-
           <li className={`tablink ${location.pathname === '/' ? 'active-side' : null}`} onClick={logoutHandle}>
             <TbLogout className="tblogout" /> Log Out
           </li>
