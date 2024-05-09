@@ -1,0 +1,251 @@
+.subscribe-section button {
+  background-color: #F44464;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.Team-section-part h4 {
+  /* display: flex; */
+  cursor: pointer;
+  /* margin-top: 1rem; */
+  /* gap: 1rem; */
+  font-weight: 400;
+
+}
+
+.Team-section-part :hover {
+  color: #F44464;
+}
+
+
+
+
+.player-img-section img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+.player-info-section td {
+  padding: 2rem;
+}
+
+.Stats-button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: #F44464;
+  border-radius: 8px;
+}
+
+.player-list {
+  background-color: lightgrey !important;
+  width: 100% !important;
+
+}
+
+.player-list-name {
+  list-style: none;
+  display: flex;
+  margin-top: 1rem;
+  padding: .5rem;
+  align-items: center;
+
+}
+
+.player-head {
+  display: flex;
+  /* border-bottom: 1px solid black; */
+  font-size: 16px;
+  padding: 0.5rem;
+  color: white;
+  background-color: black;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+
+}
+
+.player-name {
+  width: 35%;
+
+}
+
+.player-img {
+  width: 35%;
+  display: flex;
+  align-items: center;
+}
+
+.player-action {
+  width: 30%;
+  text-align: right;
+}
+
+.player-padding {
+  padding-right: 1rem;
+}
+
+.player-padding:nth-child(3) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+  padding: 0 2rem;
+}
+
+
+.player-action button {
+  background-color: #1B9B46;
+  padding: .5rem 1rem .5rem 1rem;
+  cursor: pointer;
+  border: none;
+  margin: 1rem;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--head-text-color);
+  border-radius: 4px;
+}
+
+.show-btn {
+  text-decoration: none;
+  font-size: .85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: white;
+  height: 2rem;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: #11a489;
+  cursor: pointer;
+}
+
+.refresh-section {
+  color: white;
+
+}
+.form-content-1 {
+width: 50%;
+max-height: 500px;
+background-color:white;
+padding-bottom: 1rem ;
+border-radius: 6px;
+overflow-x: hidden;
+box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* .match-date-flex{
+  display: flex;
+  align-items: center ;
+  justify-content: space-between;
+  width: 58%;
+} */
+
+.calendar-component2{
+width: 40%;
+margin-top: 1.7rem;
+}
+
+.image-player-button button{
+  /* fontSize: "1.2rem", border: "none", backgroundColor: "white", color: "#F44464", borderRadius: "8px", cursor: "pointer", padding: "0.2rem", display: "flex" */
+  font-size: 1.2rem;
+  border: none;
+  background-color: white;
+  color: #F44464;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+
+}
+
+.matchdata-flex{
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+}
+
+
+.team-flex-1{
+  display: flex !important;
+  align-items: center !important;
+}
+.style-summary{
+  height: 74.62px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+
+
+/* ////////////////// responsive 768px ///////////////// */
+
+@media (max-width:768px) {
+  .player-padding:nth-child(3) {
+    padding: 0 1.5rem;
+    margin-left: 0rem;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .player-name {
+    width: 30%;
+    font-size: 1rem;
+  }
+
+  .player-img {
+    width: 35%;
+    font-size: 1rem;
+  }
+
+  .player-action {
+    width: 30%;
+  }
+
+  .player-action button {
+    width: 100%;
+    padding: .5rem 1rem .5rem 1rem;
+  }
+
+
+  .calendar-component2 {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+
+  .form-content-1{
+    width: 100%;
+  }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+  .calendar-component2 {
+    width: 70%;
+    /* margin: 0; */
+  }
+}
+
+
+@media (min-width:1025px) and (max-width:1330px) {
+  .calendar-component2{
+    width: 50%;
+  }
+}

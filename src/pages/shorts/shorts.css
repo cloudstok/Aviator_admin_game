@@ -1,0 +1,54 @@
+
+.user-btn{
+    background-color: green;
+    border: none;
+    padding: 0.5rem;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.user-btn a{
+    text-decoration: none;
+    text-transform: capitalize;
+    color: white;
+}
+
+.ButtonBack {
+    background-color:#11a489;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.search-short-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.show-flex-1{
+    display: flex !important;
+    align-items: center !important;
+    gap: .5rem !important;
+}
+.show-flex-1 img{
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+}
+
+@media (max-width:768px) {
+    .user-btn{
+        width: 100%;
+    }
+}

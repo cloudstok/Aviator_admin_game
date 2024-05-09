@@ -1,0 +1,155 @@
+.login-container {
+  background-color: var(--secondary-bg-color);
+  height: 100vh;
+  padding: 4rem 0;
+
+}
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  justify-content: center;
+}
+.logo{
+  width: 35px;
+}
+.main-input-container {
+  padding: 1.5rem;
+  background-color:var(--primary-bg2);
+  border-radius: 1rem;
+
+}
+
+.login-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem;
+  width: 60%;
+  margin: 0 auto;
+}
+
+
+.sign-in-content {
+ padding: 2rem 0 2rem 0;
+  text-align: center;
+}
+
+.sign-in-content h2 {
+  color: var(--text-color);
+  text-align: center;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 150%;
+  /* 36px */
+  padding-bottom: .2rem;
+}
+
+.input-container img{
+  width: 24px;
+  height: 24px;
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--secondary-bg-color);
+  padding: 1.2rem;
+  margin-top: 1rem;
+  border-radius: .5rem;
+}
+
+.input-container input {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  width: 329px;
+  outline: none;
+  color: var(--head-text-color);
+  padding-left: .4rem;
+}
+
+.input-container input:focus {
+  background-color: transparent;
+}
+.login-para-container {
+  /* width: 329px; */
+  margin-top: .5rem;
+}
+
+.remember {
+  font-weight: 400;
+  cursor: pointer;
+
+}
+
+.forgot {
+  font-weight: 500;
+cursor: pointer;
+}
+
+.sign-in-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.sign-in-btn button {
+  background-color: var(--tab-color);
+  border: none;
+  outline: none;
+  padding: .8rem 2rem .8rem 2rem;
+  border-radius: 2rem;
+  color: var(--head-text-color);
+  font-size: var(--regular-font-size);
+  cursor: pointer;
+}
+
+.round-box-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.round-box {
+  background-color: var(--primary-bg2);
+  width: 45.39px;
+  height: 45.39px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.or {
+  padding: 1rem 0 1rem 0;
+}
+
+.create-acc-container {
+  margin-top: 3rem;
+}
+
+.create-acc-container a {
+  color: var(--tab-color);
+}
+
+
+@media (max-width:500px) {
+  .login-container{
+    height: 100%;
+  }
+  .main-input-container {
+    width: 90%;
+  }
+  .login-form-container {
+    width: 100%;
+    padding: 4.5rem 0rem;
+  }
+}
+

@@ -1,0 +1,86 @@
+.modal-body {
+  background-color: black;
+  color: white;
+  border: 1.5px solid grey;
+  border-radius: 4px;
+  display: none;
+}
+.active-modal {
+  display: block;
+  position: absolute;
+  top:10%;
+  left:50%; 
+  transform: translate(-50px, -20px);
+  padding: 0.5rem;
+  transition: 0.4s;
+}
+.modal-para {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-para p {
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.alert-body {
+  display: none; 
+  text-align: center;
+}
+.are-you{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.mark-icon{
+  font-size: 5rem;
+  color: rgba(255, 192, 203, 0.799);
+}
+.trick-icon{
+  font-size: 4.5rem;
+  color: rgba(0, 128, 0, 0.868)
+}
+.alert-btn{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+}
+.saved-btn{
+  margin-top: 1rem;
+  display: flex;
+  justify-content:center;
+}
+.saved-btn button{
+  background-color: #0f93b4;
+}
+
+.active-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+ 
+}
+.alert-content{
+  box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 1rem;
+  transition: all 0.5s ease-in-out;
+  border-radius: .25rem;
+}
+
+.bscheck{
+  font-size: 1.5rem !important;
+}
+@media (max-width:768px) {
+  .active-alert{
+    /* width: 100%; */
+  }
+}

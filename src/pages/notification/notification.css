@@ -1,0 +1,51 @@
+.notifiaction-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+}
+
+.noti-input {
+  width: 100%;
+}
+
+.noti-input input {
+  width: 250px;
+  height: 2.5rem;
+  font-size: 1rem;
+  padding-left: 1rem;
+  outline: none;
+  border: none;
+  border: 1px solid rgba(128, 128, 128, 0.581);
+  border-radius: 4px;
+  box-shadow: 4px 2px 8px -4px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: 4px 2px 8px -4px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 4px 2px 8px -4px rgba(0, 0, 0, 0.33);
+}
+
+.notifiaction-section ::placeholder {
+  /* padding: 1rem; */
+  color: #11a489;
+
+}
+
+.noti-send button {
+  width: 100px;
+}
+
+
+@media (max-width: 320px) and (max-width:1300px) {
+  .noti-responsive {
+    width: auto;
+  }
+
+  .form {
+    width: 100%;
+  }
+}
+
+@media (max-width:480px) {
+  .notifiaction-section input {
+    width: 210px;
+  }
+}

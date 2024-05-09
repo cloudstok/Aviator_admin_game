@@ -1,0 +1,24 @@
+.table-border-association {
+  margin-top: 0.5rem;
+  border-bottom: none;
+  background-color: white;
+}
+.search-bar-news-3 input{
+    /* margin-top: 1.69rem; */
+    font-size: 1rem;
+    padding: 0.7rem;
+    border: none;
+    border: 1px solid #acacac;
+    border-radius: 0.25rem;
+    width: 100%;
+    outline: none;
+    box-shadow: 4px 1px 8px -6px rgba(0,0,0,0.33);
+    -webkit-box-shadow: 4px 1px 8px -6px rgba(0,0,0,0.33);
+    -moz-box-shadow: 4px 1px 8px -6px rgba(0,0,0,0.33);
+}
+
+@media (max-width:768px) {
+    .search-bar-news-3{
+        width: 50%;
+    }
+}
