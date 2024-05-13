@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import logo from '../assets/logo.png'
-import logoIcon from '../assets/Icon.svg'
 import './login.css'
 import Swal from "sweetalert2";
 
@@ -15,7 +13,7 @@ const Login = () => {
 
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(<FiEyeOff style={{ color: "#8B8B8B", fontSize: "1.2rem", cursor: "pointer" }} />);
-  // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+  // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-])|(\\([0-9]{2,3}\\)[ \\-])|([0-9]{2,4})[ \\-])?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
   // const validationLogin = Yup.object().shape({
   //   phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').required('Mobile Number is Required'),
@@ -28,20 +26,57 @@ const Login = () => {
       phone: "",
       password: "",
     },
+
     // validationSchema:validationLogin,
     onSubmit: async (values) => {
       console.log(values)
+      let url = `${process.env.REACT_APP_BASE_URL}/login`
+      const res = await (await fetch(url, {
+        method: 'POST',
+        headers: {
+          "content-type": 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }, body: JSON.stringify(values)
+      })).json();
+      console.log(res)
+      if (res.status !== true) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top',
+          background: "red",
+          color: "white",
+          showConfirmButton: false,
+          timer: 2000,
+          width: 450,
+          padding: ".5rem"
+        })
+
+        Toast.fire({
+          icon: 'error',
+          iconColor: "white",
+          title: res.msg
+        })
+      } else {
+        console.log(res)
+        localStorage.setItem('token', res.token)
+        localStorage.setItem('phone', res?.user?.phone)
+        localStorage.setItem('name', res?.user?.fname ?? "" + " " + res?.user?.mname ?? "" + " " + res?.user?.lname ?? "")
+
+
+        localStorage.setItem('user_name', res?.user_name)
+        navigate('/dashboard')
+      }
+
+    },
+  });
+
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
       navigate('/dashboard')
-     
-}});
 
-
-  // useEffect(() => {
-  //   if (localStorage.getItem('token')) {
-  //     navigate('/dashboard')
-
-  //   }
-  // }, [])
+    }
+  }, [])
 
 
   const handleToggle = () => {
@@ -60,7 +95,7 @@ const Login = () => {
       <div className="login-form-container">
         <div className="main-input-container">
           <div className="login-logo">
-          <h1 style={{color: "white"}}><samp style={{color:"#38ca07"}}>Avi</samp>ator</h1>
+            <h1 style={{ color: "white" }}><samp style={{ color: "#38ca07" }}>Avi</samp>ator</h1>
           </div>
           <div className="sign-in-content">
             <h2>Sign in</h2>

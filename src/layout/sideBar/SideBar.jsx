@@ -18,6 +18,11 @@ const SideBar = ({ menuOpen, setMenuOpen }) => {
     <>
       <div className={`side-left ${menuOpen ? 'active-menu' : ""} `}>
         <ul>
+        <li className={`tablink ${location.pathname.includes('dashboard') ? 'active-side' : null}`} onClick={() => { navigate('/dashboard'); setMenuOpen(false) }}>
+            Dashboard  </li>
+            
+        <li className={`tablink ${location.pathname.includes('lobby') ? 'active-side' : null}`} onClick={() => { navigate('/lobby'); setMenuOpen(false) }}>
+            Lobby Container  </li>
 
           <li className={`tablink ${location.pathname.includes('allbets') ? 'active-side' : null}`} onClick={() => { navigate('/allbets'); setMenuOpen(false) }}>
             All Bets  </li>
@@ -25,7 +30,7 @@ const SideBar = ({ menuOpen, setMenuOpen }) => {
           <li className={`tablink ${location.pathname.includes('betAmount') ? 'active-side' : null}`} onClick={() => { navigate('/betAmount'); setMenuOpen(false) }}>
             Bet Amount </li>
 
-          <li className={`tablink ${location.pathname.includes('user') ? 'active-side' : null}`} onClick={() => { navigate('/howToPlay'); setMenuOpen(false) }}>
+          <li className={`tablink ${location.pathname.includes('Play') ? 'active-side' : null}`} onClick={() => { navigate('/howToPlay'); setMenuOpen(false) }}>
             How To Play  </li>
 
           <li className={`tablink ${location.pathname === '/' ? 'active-side' : null}`} onClick={logoutHandle}>

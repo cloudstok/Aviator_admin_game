@@ -200,6 +200,8 @@ html {
   background-color: white;
     border-radius: 6px;
     margin-bottom: 1rem;
+    width: 100%;
+    
 }
 
 .main-table-content {
@@ -243,17 +245,21 @@ html {
 .table-header,
 .table-body {
   overflow-y: auto;
-  max-height: 440px;
+  max-height: 580px;
   text-align: left;
   border-radius: 4px;
   /* Set the fixed height for the table body */
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border: none;
-}
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+
 
 table tbody {
   width: 100%;
@@ -261,8 +267,9 @@ table tbody {
 }
 
 table thead tr {
-  text-align: left;
+  text-align: center;
   border: 1px solid black;
+
 }
 
 table thead tr th {
@@ -281,7 +288,7 @@ table tbody tr {
 }
 
 .table-border-height {
-  max-height: 450px;
+  max-height: 550px;
 }
 
 table .custom-row td {

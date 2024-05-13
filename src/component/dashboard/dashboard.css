@@ -1,0 +1,116 @@
+.dashoard-h2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: .5rem;
+  padding: 1rem 1rem 1rem .5rem;
+}
+.refresh-icon{
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  border-radius: .2rem;
+  padding: .2rem .5rem;
+  background-color: rgb(92, 156, 212);
+  cursor: pointer;
+}
+.dashboard-box{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+.dash-1{
+  flex: 1;
+  background-color: white;
+  padding: 1rem .5rem;
+  border-radius: .5rem;
+}
+.dash-h3{
+  margin-bottom: .8rem;
+}
+
+
+/* //////////////////////////////////// calendar-container styling ////////////////////// */
+.calendar-container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  height: 400px;
+}
+.graph-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 100%;
+  width: 65%;
+  /* margin: 50px 0px; */
+  background-color: white;
+  border-radius: .5rem;
+  padding: 1px;
+}
+
+.bar {
+  width: 5%;
+  background-color: #007bff;
+  position: relative;
+  transition: height 0.5s;
+}
+
+.bar-label {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+}
+
+.bar::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: var(--bar-height);
+  bottom: 0;
+  background-color: inherit;
+}
+
+
+/* /////////////////////// daily-feed-container styling //////////////////// */
+.daily-feed-container{
+  width: 30%;
+  background-color: white;
+  border-radius: .5rem;
+}
+.daily-box{
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem .5rem 1rem .5rem;
+  border-bottom: 1px solid rgb(214, 214, 214);;
+}
+.daily-box button{
+  padding: .2rem .5rem;
+  border: none;
+  background-color: rgb(92, 156, 212);
+  color: white;
+  border-radius: .2rem;
+}
+
+/* ////////////// daily-profile ///////////////// */
+.daily-profile{
+  padding: .5rem;
+  border-bottom: 1px solid rgb(214, 214, 214);
+}
+.profile-img{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-img-flex{
+  display: flex;
+  align-items: center;
+}
+
+.day-container p{
+  margin-left: 3.3rem;
+}
