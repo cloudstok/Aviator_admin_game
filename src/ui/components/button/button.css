@@ -1,0 +1,14 @@
+.Button-container button {
+  padding: 10px 20px;
+  background-color: var(--button-color);
+  border: none;
+  color: var(--head-text-color);
+  font-size: var(--table-td-heading);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.Button-container :hover {
+  background-color: var(--button-hover-color);
+  border-radius: 4px;
+}
+

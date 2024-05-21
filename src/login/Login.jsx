@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import './login.css'
 import Swal from "sweetalert2";
 
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { FiEyeOff, FiEye } from 'react-icons/fi'
 import * as Yup from 'yup';
 import { FaPhone } from "react-icons/fa6";
 import { MdLockOutline } from "react-icons/md";
+import { ROUTES } from '../routes/Routes';
 const Login = () => {
   const navigate = useNavigate()
 
@@ -41,7 +42,7 @@ const Login = () => {
       console.log(res)
       if (res.status !== true) {
         const Toast = Swal.mixin({
-          toast: true,
+          toast: false,
           position: 'top',
           background: "red",
           color: "white",
@@ -73,7 +74,7 @@ const Login = () => {
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      navigate('/dashboard')
+      navigate(ROUTES.DASHBOARD);
 
     }
   }, [])

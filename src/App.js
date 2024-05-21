@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { ROUTES } from './routes/Routes';
+
 import ProtectedRoute from './services/ProtectedRoute';
+import Dashboard from './ui/pages/dashboard/Dashboard';
+import Operator from './ui/pages/operator/Operator';
+import User from './ui/pages/user/Users'
+import Wallet from './ui/pages/wallet/Wallet'
+import Bet from './ui/pages/bet/Bet'
 import Login from './login/Login';
-import AllBets from './pages/allbets/AllBets';
-import BetAmount from './pages/myAmount/BetAmount';
-import AddAmount from './pages/myAmount/AddAmount';
-import HowToPlay from './pages/howtoplay/HowToPlay';
-import LobbyContainer from './pages/lobby/LobbyContainer';
-import Dashboard from './component/dashboard/Dashboard';
+import Games from './ui/pages/game/Games';
+import Stats from './ui/pages/stats/Stats';
+import UserList from './ui/pages/operator/UserList';
+import GameList from './ui/pages/operator/GameList';
 
 function App() {
   let isAuthenticated = false;
@@ -17,20 +22,47 @@ function App() {
 
   return (
     <>
+
       <BrowserRouter>
         <Routes>
 
+          <Route
+            path={ROUTES.LOGIN}
+
+          element={
+            isAuthenticated ? (
+              <Navigate to={ROUTES.DASHBOARD} />
+            ) : (
+              <Login />
+            )
+          }
+          />
+
+          {/* <Route element={<MainLayout />} /> */}
+
           <Route exact path='/' element={<Login />} />
-          <Route exact path='/dashboard' element={<ProtectedRoute Children={<Dashboard />} />} />
-          {/* <Route exact path='/home' element={<Home/>} /> */}
-          <Route exact path='lobby' element={<ProtectedRoute Children={<LobbyContainer/>}/>}/>
-          <Route exact path='/allbets' element={<ProtectedRoute Children={<AllBets />} />} />
-          <Route exact path='/betAmount' element={<ProtectedRoute Children={<BetAmount />} />} />
-          <Route exact path='/betAmount/addAmount' element={<ProtectedRoute Children={<AddAmount />} />} />
-          <Route exact path='/howToPlay' element={<ProtectedRoute Children={<HowToPlay />} />} />
+          <Route element={<ProtectedRoute />}>
+            <Route exact path={ROUTES.DASHBOARD} element={<Dashboard />} />
+          
+            <Route exact path={ROUTES.OPERATOR} element={<Operator/>}/>
+            <Route exact path={ROUTES.USER} element={<User/>}/>
+            <Route exact path={ROUTES.WALLET} element={<Wallet/>}/>
+            <Route exact path={ROUTES.BET} element={<Bet/>}/>
+            <Route exact path={ROUTES.GAME} element={<Games/>}/>
+            <Route exact path={ROUTES.STATS} element={<Stats/>}/>
+            <Route exact path={ROUTES.GAMELIST} element={<GameList/>}/>
+            <Route exact path={ROUTES.USERLIST} element={<UserList/>}/>
+            <Route exact path={ROUTES.GAMELIST} element={<GameList/>}/>
+
+
+
+
+
+            
+
+          </Route>
 
         </Routes>
-
       </BrowserRouter>
     </>
   );
