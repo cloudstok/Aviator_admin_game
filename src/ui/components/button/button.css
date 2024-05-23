@@ -6,6 +6,7 @@
   font-size: var(--table-td-heading);
   border-radius: 4px;
   cursor: pointer;
+ 
 }
 .Button-container :hover {
   background-color: var(--button-hover-color);

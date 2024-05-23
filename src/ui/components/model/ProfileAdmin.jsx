@@ -2,13 +2,13 @@
 // import Button from '../button/Button';
 // import './model.css'
 
-// const OperatorUser = ({ show, setShowModal }) => {
+// const ProfileAdmin = ({ show, setOpenIcon }) => {
 //     return (
 
 
 //         <div className={`modal ${show ? 'show' : ''}`}>
 //             <div className="modal-content">
-//                 <span className="close" onClick={()=>setShowModal(false)}>&times;</span>
+//                 <span className="close" onClick={()=>setOpenIcon(false)}>&times;</span>
 //                 <div className=''>
 //                     <h3>User List</h3>
 //                 </div>
@@ -52,4 +52,4 @@
 //     );
 // };
 
-// export default OperatorUser;
+// export default ProfileAdmin;

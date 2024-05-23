@@ -26,6 +26,15 @@
   --table-heading:14px;
   --table-td-heading: 12px;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
 .commissionContainer {
   width: 100%;
   background-color: var(--white-color);
@@ -103,7 +112,7 @@ table tbody tr td {
   align-items: center !important;
   padding: 0.4rem 1.5rem 0.4rem 0.5rem;
   background-color: var(--white-color);
-  position: sticky;
+  /* position: sticky; */
   border-bottom: 1px solid var(--border-color ); 
   top: 0;
   z-index: 100;
@@ -118,4 +127,23 @@ table tbody tr td {
   /* overflow-y: hidden; */
   scrollbar-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1);
   scrollbar-width: thin;
+}
+
+.icon-action .tooltiptext {
+  visibility: hidden;
+  /* width: 100px; */
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin-top: 3rem;
+  font-size: 12px;
+  font-weight: 800;
+  /* Position the tooltip */
+  position: absolute; 
+  z-index: 1;
+}
+.mdDelete {
+  color: white;
+  font-size: 1.5rem;
 }

@@ -20,115 +20,127 @@ export default {
 }   
 
 
-
-// module.exports = data
-
-
 // import React, { useEffect, useState } from 'react'
-// import { MdEdit } from 'react-icons/md'
-// import { MdDelete } from 'react-icons/md'
-// import { EmpData } from '../../EmpData'
-// import { AiOutlineClose } from 'react-icons/ai'
-// import { IoSearchOutline } from 'react-icons/io5'
-// import { useNavigate } from 'react-router-dom'
+// import { getCaller } from '../../../services/api';
+// import Button from '../../components/button/Button'
 
-// const BetAmount = () => {
-//   const navigate = useNavigate()
-//   const [data, setData] = useState([])
-//   const [inputValue, setInputValue] = useState("")
+// const Profile = ({ show, setOpenIcon }) => {
+//     const[profileData, setProfileData] = useState({})
 
-//   const handleEdit = (id) => {
-//     const dt = data.filter(item => item.id === id);
-//     if (dt !== undefined) {
-
+//     const profData = async () => {
+//         const res = await getCaller(`self/operator`)
+//         setProfileData(res.data)
 //     }
-//   }
 
-//   const handleDelete = (id) => {
-//     if (id > 0) {
-//       if (window.confirm("Are Your Sure To Delete ?")) {
-//         const dt = data.filter(item => item.id !== id);
-//         setData(dt);
-//       }
-//     }
-//   }
+//     const [formData, setFormData] = useState({
+//         name: profileData?.name ? profileData?.name : "",
+//         user_id: profileData?.user_id ? profileData?.user_id : "",
+//         image: profileData?.image ? profileData?.image : "",
+//         role: profileData?.role ? profileData?.role : "",
+     
+//     });
 
-//   useEffect(() => {
-//     setData(EmpData)
-//   }, []);
-//   return (
-//     <div className="main-table-header">
-//       <div className="main-table-content">
-//         <div className="wrapper-head">
-//           <h3>Amount List</h3>
-//           <div className='search-news-section'>
-//             <div className="head-btn">
-//               <button onClick={(() => navigate('/betAmount/addAmount'))}>Add Amount</button>
+// console.log(formData.name)
+
+// useEffect(()=> {
+//     profData()
+// },[])
+
+//     const handleChange = (e) => {
+//         const { name, value } = e.target;
+//         setFormData({
+//             ...formData,
+//             [name]: value,
+//         });
+//     };
+
+//     const handleImageChange = (e) => {
+//         setFormData({
+//             ...formData,
+//             image: URL.createObjectURL(e.target.files[0]),
+//         });
+//     };
+
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+//         // Handle form submission logic
+//         console.log(formData);
+//     };
+//     return (
+//         <div>
+//             <div className={`modal ${show ? 'show' : ''}`}>
+//                 <div className="modal-content">
+//                     <span className="close" onClick={() => setOpenIcon(false)}>&times;</span>
+//                     <div className="data-table-container">
+//                         <div className='Add-container'>
+//                             <h3>My Profile</h3>
+//                             <Button name="Add User" />
+//                         </div>
+
+//                         <form onSubmit={handleSubmit} className="form-container">
+//                             <div>
+//                                 <label>Name:</label>
+//                                 <input
+//                                     type="text"
+//                                     name="name"
+//                                     value={profileData.name}
+//                                     onChange={handleChange}
+//                                 />
+//                             </div>
+//                             <div>
+//                                 <label>User Id:</label>
+//                                 <input
+//                                     type="text"
+//                                     name="lastName"
+//                                     value={formData.user_id}
+//                                     onChange={handleChange}
+//                                 />
+//                             </div>
+//                             <div>
+//                                 <label>Image:</label>
+//                                 <input
+//                                     type="file"
+//                                     name="image"
+//                                     accept="image/*"
+//                                     onChange={handleImageChange}
+//                                 />
+//                                 {formData.image && (
+//                                     <div>
+//                                         <img
+//                                             src={formData.image}
+//                                             alt="Selected"
+//                                             style={{ width: '100px', height: '100px' }}
+//                                         />
+//                                     </div>
+//                                 )}
+//                             </div>
+//                             <div>
+//                                 <label>Role:</label>
+//                                 <input
+//                                     type="text"
+//                                     name="role"
+//                                     value={formData.role}
+//                                     onChange={handleChange}
+//                                 />
+//                             </div>
+                           
+
+//                             <div className='form-submit-btn'>
+//                                 <button type="submit">Submit</button>
+//                             </div>
+//                         </form>
+
+
+
+
+//                     </div>
+//                 </div>
+
+
 //             </div>
-//             {/* <div className='searchcard' >
-//               <input type="text" name="" id="" placeholder='Search' className='result-input'
-//                 onChange={event => { setInputValue(event.target.value); }}
-//                 value={inputValue}
-//               />
-//               {inputValue ? <div className="ai-close">
-//                 <AiOutlineClose onClick={(event) => setInputValue('')}
-//                 />
-//               </div> : <div className='ai-close'> <IoSearchOutline /></div>
-//               }
-//             </div> */}
-//           </div>
-
 //         </div>
-//       </div>
-//       <div className="table-header">
-//         <table style={{ overflowX: "auto", whiteSpace: "nowrap", border: ".5rem" }}>
-//           <thead>
-//             <tr className='custom-row'>
-//               <th> Id </th>
-//               <th>cash 1</th>
-//               <th> cash 2</th>
-//               <th>cash 3</th>
-//               <th>cash 4</th>
-//               <th>Action</th>
-//             </tr>
-//           </thead>
-//           <tbody>
 
-//             {
-//               data.map((item, index) => {
-//                 return (
-
-//                   <tr className='custom-row' style={{ backgroundColor: "white" }} key={index}>
-//                     <td data-label="UID"> <p className='uid_name' > {item?.id} </p> </td>
-//                     <td data-label="SPORT">{item?.case1}</td>
-//                     <td data-label="MARKET" height={70} > {item.case2} </td>
-//                     <td data-label="MARKET" height={70} > {item.case3} </td>
-//                     <td data-label="MARKET" height={70} > {item.case4}</td>
-
-//                     <td data-label="STATUS">
-//                       <div className='user-icon' width={100}>
-//                         <div className="icon-action" onClick={() => handleEdit(item.id)} >
-//                           <MdEdit className='mdDelete' />
-
-//                         </div>
-//                         <div className="icon-action" style={{ backgroundColor: "#F44464" }} onClick={() => handleDelete(item.id)}>
-//                           <MdDelete className='mdDelete' />
-
-//                         </div>
-//                       </div>
-//                     </td>
-//                   </tr>
-//                 )
-//               })
-//             }
-
-
-
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
-//   )
+//     )
 // }
 
-// export default BetAmount
+// export default Profile

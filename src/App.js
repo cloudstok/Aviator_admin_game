@@ -4,7 +4,6 @@ import { ROUTES } from './routes/Routes';
 
 import ProtectedRoute from './services/ProtectedRoute';
 import Dashboard from './ui/pages/dashboard/Dashboard';
-import Operator from './ui/pages/operator/Operator';
 import User from './ui/pages/user/Users'
 import Wallet from './ui/pages/wallet/Wallet'
 import Bet from './ui/pages/bet/Bet'
@@ -13,6 +12,10 @@ import Games from './ui/pages/game/Games';
 import Stats from './ui/pages/stats/Stats';
 import UserList from './ui/pages/operator/UserList';
 import GameList from './ui/pages/operator/GameList';
+import OperatorLogin from './login/OperatorLogin';
+import AuthForm from './login/AuthForm';
+import Profile from './ui/pages/profile/Profile';
+import Admin from './ui/pages/operator/Admin';
 
 function App() {
   let isAuthenticated = false;
@@ -40,19 +43,22 @@ function App() {
 
           {/* <Route element={<MainLayout />} /> */}
 
-          <Route exact path='/' element={<Login />} />
+          <Route exact path='/' element={<AuthForm/>} />
           <Route element={<ProtectedRoute />}>
             <Route exact path={ROUTES.DASHBOARD} element={<Dashboard />} />
           
-            <Route exact path={ROUTES.OPERATOR} element={<Operator/>}/>
+            <Route exact path={ROUTES.ADMIN} element={<Admin/>}/>
             <Route exact path={ROUTES.USER} element={<User/>}/>
             <Route exact path={ROUTES.WALLET} element={<Wallet/>}/>
             <Route exact path={ROUTES.BET} element={<Bet/>}/>
-            <Route exact path={ROUTES.GAME} element={<Games/>}/>
             <Route exact path={ROUTES.STATS} element={<Stats/>}/>
-            <Route exact path={ROUTES.GAMELIST} element={<GameList/>}/>
+            <Route exact path={ROUTES.GAME} element={<GameList/>}/>
             <Route exact path={ROUTES.USERLIST} element={<UserList/>}/>
+            {/* <Route exact path={ROUTES.GAMELIST} element={<GameList/>}/> */}
             <Route exact path={ROUTES.GAMELIST} element={<GameList/>}/>
+            <Route exact path={ROUTES.OPERATORLOGIN} element={<OperatorLogin/>}/>
+            <Route exact path={ROUTES.PROFILE} element={<Profile/>}/>
+
 
 
 

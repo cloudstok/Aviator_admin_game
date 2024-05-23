@@ -1,6 +1,10 @@
 .side-bar-container {
-  background-color: #101A33;
+  height: 100vh;
+  position: sticky !important;
+  top: 0;
+  background-color: #101a33;
   color: white;
+ 
 }
 .side-left {
   width: 180px;
@@ -10,26 +14,28 @@
   flex-direction: column;
   padding: 0.5rem;
 }
+.active-side{
+  color: var(--head-text-color) !important;
+    background-color: var(--tab-color);
+    border-bottom: none !important;
+}
 
 .tablink {
   font-size: 14px;
   cursor: pointer;
   /* border: 1px solid red; */
-  margin: 0.5rem;  
+  margin: 0.5rem;
   border-radius: 4px;
   border-bottom: 1px solid rgb(57, 140, 140);
 }
 .image-game {
   display: flex;
   justify-content: center;
- 
 }
-.image-game img{
- 
+.image-game img {
   width: 150px;
   height: 100px;
 }
-
 
 .tablink:hover {
   color: var(--button-color); /* Change color on hover */
@@ -44,7 +50,6 @@
 
 .side-header {
   display: flex;
-
 }
 
 .operator-side-bar {
@@ -52,5 +57,3 @@
   align-items: center;
   gap: 0.5rem;
 }
-
-

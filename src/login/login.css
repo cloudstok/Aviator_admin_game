@@ -97,6 +97,7 @@ cursor: pointer;
 
 .sign-in-btn {
   display: flex;
+  gap: 2rem;
   justify-content: center;
   align-items: center;
   margin-top: 3rem;
@@ -119,6 +120,9 @@ cursor: pointer;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+.link-button {
+  color: white;
 }
 
 .round-box {
