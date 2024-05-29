@@ -9,10 +9,12 @@ import { postCaller } from '../../../services/api';
 const success = Swal.mixin(toastData.success);
 const error = Swal.mixin(toastData.error);
 
-const AddAdmin = ({ show, setShowModal,operatorTable }) => {
+const AddAdmin = ({ show, setShowModal, operatorTable }) => {
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [currency, setCurrency] = useState('');
+    const password = useState('');
+
 
     if (!show) return null;
 
@@ -23,8 +25,9 @@ const AddAdmin = ({ show, setShowModal,operatorTable }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await postCaller('admin', { name, currency });
+            const res = await postCaller('superAdmin/admin', { name, currency });
             if (res?.status === true) {
+                window.alert(`Plz Copy the Password from here,\n Password = ${res.password} \n userID =${res.user_id}`)
                 success.fire(Object.assign(icon.success, { title: res.msg })).then(() => (
                     navigate(ROUTES.OPERATOR)
                 ));
@@ -33,7 +36,7 @@ const AddAdmin = ({ show, setShowModal,operatorTable }) => {
             setCurrency("");
             handleClose()
             operatorTable()
-            
+
 
         } catch (error) {
             console.error('Error sending data', error);
@@ -54,21 +57,22 @@ const AddAdmin = ({ show, setShowModal,operatorTable }) => {
                         <input
                             type="text"
                             value={name}
+                            password={password}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Enter user name"
                         />
-                        <div className='' style={{display:"flex", gap:"0.5rem", marginTop:"1rem"}}>
-                        <label htmlFor='currency'>Currency:</label>
-                        <select
-                            value={currency}
-                            onChange={(e) => setCurrency(e.target.value)}   >
-                            <option value="" disabled>Select currency</option>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                            {/* Add more currencies as needed */}
-                        </select>
-</div>
+                        <div className='' style={{ display: "flex", gap: "0.5rem", marginTop: "1rem" }}>
+                            <label htmlFor='currency'>Currency:</label>
+                            <select
+                                value={currency}
+                                onChange={(e) => setCurrency(e.target.value)}   >
+                                <option value="" disabled>Select currency</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                                {/* Add more currencies as needed */}
+                            </select>
+                        </div>
                         <div className='form-submit-btn'>
                             <button type="submit">Send Data</button>
                         </div>

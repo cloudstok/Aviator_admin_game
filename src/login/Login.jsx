@@ -31,7 +31,7 @@ const Login = ({ toggleForm }) => {
 
     // validationSchema:validationLogin,
     onSubmit: async (values) => {
-      let url = `${process.env.REACT_APP_BASE_URL}/login`
+      let url = `${process.env.REACT_APP_BASE_URL}/superAdmin/login`
       const res = await (await fetch(url, {
         method: 'POST',
         headers: {

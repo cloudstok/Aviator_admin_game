@@ -38,16 +38,19 @@ const SideBar = () => {
           {
             role === "SUPERADMIN" ? <div className={`tablink ${isActive('/admin') ? 'active-side' : null}`} onClick={() => { navigate(ROUTES.ADMIN) }}>
               <div className='operator-side-bar'> <TbBrandOpenvpn />  Admin </div>
-            </div> : null }
+            </div> : null
+          }
+          {
+            role === "ADMIN" ? <div className={`tablink ${isActive('/user') ? 'active-side' : null}`} onClick={() => { navigate(ROUTES.USERLIST) }}>
+              <div className='operator-side-bar'> <FaRegUser />  User </div>
+            </div> : null
+          }
 
-          <div className={`tablink ${isActive('/user') ? 'active-side' : null}`} onClick={() => { navigate(ROUTES.USERLIST) }}>
-            <div className='operator-side-bar'> <FaRegUser />  User </div>
-          </div>
 
-          <div className={`tablink ${isActive('/profile') ? 'active-side' : null}`} onClick={() => { navigate(ROUTES.PROFILE) }}>
-            <div className='operator-side-bar'> <CgProfile/> My Profile </div>
+          {/* <div className={`tablink ${isActive('/profile') ? 'active-side' : null}`} onClick={() => { navigate(ROUTES.PROFILE) }}>
+            <div className='operator-side-bar'> <CgProfile /> My Profile </div>
 
-          </div>
+          </div> */}
 
           <div className={`tablink ${isActive('/wallet') ? 'active-side' : null}`} onClick={() => { navigate(ROUTES.WALLET) }}>
             <div className='operator-side-bar'> <IoMdWallet />  Wallet </div>
@@ -62,9 +65,11 @@ const SideBar = () => {
             <div className='operator-side-bar'> <IoStatsChartSharp />  Stats </div>
 
           </div>
+
           {/* <div className={`tablink ${isActive('/gamelist') ? 'active-side' : null}`} onClick={() => { navigate(ROUTES.GAMELIST) }}>
             <div className='operator-side-bar'> <FaList /> Game List </div>
           </div> */}
+
           <div className={`tablink ${isActive('/gameList') ? 'active-side' : null}`} onClick={() => { navigate(ROUTES.GAMELIST) }}>
             <div className='operator-side-bar'> <IoGameController />Game List </div>
 

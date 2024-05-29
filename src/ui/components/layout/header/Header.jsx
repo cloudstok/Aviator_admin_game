@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import './header.css'
 import { useNavigate } from "react-router-dom";
 import img from '../../../../assets/avator.png'
-import AddButton from "../../button/AddButton";
-import AddOperatorModal from "../../../pages/operator/AddAdmin";
-import Profile from "../../../pages/profile/Profile";
+
 const Header = ({ toggleOpen, setToggleOpen }) => {
    const [name, setName] = useState("");
    const userRole = localStorage.getItem("role");
