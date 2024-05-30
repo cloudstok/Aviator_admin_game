@@ -8,17 +8,12 @@ const ResetPassword = ({ password, setPassword, userId }) => {
 
     const initialValues = {
         password: '',
-        newPassword: '',
-        confirmPassword: ''
 
     };
 
     const validationSchema = Yup.object({
         password: Yup.string().required('Old Password is required'),
-        newPassword: Yup.string().required('New Password is required'),
-        confirmPassword: Yup.string()
-            .oneOf([Yup.ref('newPassword'), null], 'Passwords must match')
-            .required('Confirm Password is required')
+
     });
 
     const handleSubmit = async (values, { setSubmitting, setStatus, resetForm }) => {
@@ -26,7 +21,8 @@ const ResetPassword = ({ password, setPassword, userId }) => {
         setSubmitting(true);
 
         try {
-            let url = `${process.env.REACT_APP_BASE_URL}/admin/reset/password`
+
+            let url = `${process.env.REACT_APP_BASE_URL}/superAdmin/change/password`
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -36,7 +32,6 @@ const ResetPassword = ({ password, setPassword, userId }) => {
                 },
                 body: JSON.stringify({
                     password: values.password,
-                    newPassword: values.newPassword,
                     user_id: userId
                 }),
             });
@@ -74,37 +69,16 @@ const ResetPassword = ({ password, setPassword, userId }) => {
                             {({ isSubmitting, status }) => (
                                 <Form>
                                     <div>
-                                        <label htmlFor="oldPassword">Password:</label>
+                                        <label htmlFor="Password">Password:</label>
                                         <Field
                                             type="password"
                                             id="password"
                                             name="password"
                                             placeholder="Enter Your Password"
                                         />
-                                        <ErrorMessage name="oldPassword" component="div" style={{ color: 'red' }} />
+                                        <ErrorMessage name="Password" component="div" style={{ color: 'red' }} />
                                     </div>
 
-                                    {/* <div>
-                                        <label htmlFor="newPassword">New Password:</label>
-                                        <Field
-                                            type="password"
-                                            id="newPassword"
-                                            name="newPassword"
-                                            placeholder="Enter Your New Password"
-                                        />
-                                        <ErrorMessage name="newPassword" component="div" style={{ color: 'red' }} />
-                                    </div> */}
-
-                                    {/* <div>
-                                        <label htmlFor="confirmPassword">Confirm Password:</label>
-                                        <Field
-                                            type="password"
-                                            id="confirmPassword"
-                                            name="confirmPassword"
-                                            placeholder="Confirm Your New Password"
-                                        />
-                                        <ErrorMessage name="confirmPassword" component="div" style={{ color: 'red' }} />
-                                    </div> */}
 
                                     {status && status.error && <p style={{ color: 'red' }}>{status.error}</p>}
                                     {status && status.success && <p style={{ color: 'green' }}>{status.success}</p>}

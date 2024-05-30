@@ -27,7 +27,7 @@ const AddAdmin = ({ show, setShowModal, operatorTable }) => {
         try {
             const res = await postCaller('superAdmin/admin', { name, currency });
             if (res?.status === true) {
-                window.alert(`Plz Copy the Password from here,\n Password = ${res.password} \n userID =${res.user_id}`)
+                // window.alert(`Plz Copy the Password from here,\n Password = ${res.password} \n userID =${res.user_id}`)
                 success.fire(Object.assign(icon.success, { title: res.msg })).then(() => (
                     navigate(ROUTES.OPERATOR)
                 ));

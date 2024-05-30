@@ -1,10 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { getCaller } from '../../../services/api';
 import AddButton from '../../components/button/AddButton'
 import AddUser from './AddUser';
+import { MdDelete, MdEdit } from 'react-icons/md';
 
 
 const UserList = () => {
   const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState()
+  const [isEditButtonClicked, setIsEditButtonClicked] = useState(false);
+
+  const userData = async () => {
+    const res = await getCaller(`admin/users`)
+    setUser(res?.data)
+  }
+
+  useEffect(() => {
+    userData()
+  }, [])
 
   return (
 
@@ -22,69 +35,48 @@ const UserList = () => {
             <table>
               <thead>
                 <tr>
+                  <th>User Id</th>
                   <th>Name</th>
-                  <th>Currency</th>
-                  <th>User List</th>
-                  <th>Game List</th>
-                  <th>Status</th>
+                  <th>Email</th>
+                  <th>Phone</th>
                   <th>Action</th>
                 </tr>
               </thead>
-              {/* <tbody>
-                {operatorData?.length > 0 ? operatorData?.map((el, i) => (
-                  <tr key={i}>
-                    <td>{el?.name}</td>
-                    <td>{el?.user_id}</td>
 
-                    <td>
-                      {visibleRow === i ? el?.client_secret : '••••••••'}
-                      <button onClick={() => toggleSecretVisibility(i)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-                        {visibleRow === i ? <MdVisibilityOff /> : <MdVisibility />}
-                      </button>
-                    </td>
-
-
-                    <td>
-                      <AddButton name="Reset" handleOpenModal={() => handleReset(el?.user_id)} />
-                    </td>
-
-                    <td>{el?.currency}</td>
-                    <td>
-                      <Button name="View List" routes={() => navigate(ROUTES.USERLIST)} />
-                    </td>
-                    <td>
-                      <Button name="Game List" routes={() => navigate(ROUTES.GAMELIST)} />
-                    </td>
-                    <td data-label="MARKET" height={70} onClick={() => unable(el)}>
-                      <TogglePage defaultChecked={el?.is_active} />
-                    </td>
-
-                    <td>
+              <tbody>
+                {user?.length > 0 ? user?.map((el,i) => (
+                <tr key={i}>
+                  <td>{el?.user_id}</td>
+                  <td>{el?.name}</td>
+                  <td>{el?.email}</td>
+                  <td>{el.phone}</td>
+                  <td>
                       <div className='action-section'>
                         <button type='button' style={{ color: isEditButtonClicked ? '#007bff' : 'red' }}>
                           <MdEdit />
                         </button>
-                        <button type='button' onClick={() => deleteAdmin(el?.user_id)}>
+                        <button type='button'>
                           <MdDelete />
                         </button>
                       </div>
                     </td>
-                  </tr>
-                )) : (
+                </tr>
+                ) ) : (
                   <tr>
                     <td className='no-data-column' align='center' colSpan={10}>No Data</td>
                   </tr>
+                
                 )}
-              </tbody> */}
+
+              </tbody>
+
             </table>
 
             {showModal && (
-              <AddUser show={showModal} setShowModal={setShowModal} />
+              <AddUser show={showModal} setShowModal={setShowModal} userData={userData} />
 
             )}
-            {/* {password && (
-              <ResetPassword password={password} setPassword={setPassword} userId={userId} />
-            )} */}
+          
             {/* <PaginationComponent
               currentPage={currentPage}
               itemsPerPage={pageSize}

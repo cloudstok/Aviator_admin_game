@@ -9,12 +9,9 @@ import { postCaller } from '../../../services/api';
 const success = Swal.mixin(toastData.success);
 const error = Swal.mixin(toastData.error);
 
-const AddUser = ({ show, setShowModal, operatorTable }) => {
+const AddUser = ({ show, setShowModal, userData }) => {
     const navigate = useNavigate();
     const [name, setName] = useState('');
-    const [currency, setCurrency] = useState('');
-    const password = useState('');
-
 
     if (!show) return null;
 
@@ -25,22 +22,19 @@ const AddUser = ({ show, setShowModal, operatorTable }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await postCaller('superAdmin/admin', { name, currency });
+            const res = await postCaller('admin/users', { name });
             if (res?.status === true) {
-                window.alert(`Plz Copy the Password from here,\n Password = ${res.password} \n userID =${res.user_id}`)
                 success.fire(Object.assign(icon.success, { title: res.msg })).then(() => (
-                    navigate(ROUTES.OPERATOR)
+                    navigate(ROUTES.USERLIST)
                 ));
             }
             setName("");
-            setCurrency("");
             handleClose()
-            operatorTable()
-
+            userData()
 
         } catch (error) {
             console.error('Error sending data', error);
-            error.fire(Object.assign(icon.error, { title: 'Error sending data' }));
+            // error.fire(Object.assign(icon.error, { title: 'Error sending data' }));
         }
     };
 
@@ -48,7 +42,7 @@ const AddUser = ({ show, setShowModal, operatorTable }) => {
         <div className={`modal ${show ? 'show' : ''}`}>
             <div className="modal-content">
                 <div className='add-operator'>
-                    <h2>Add Admin</h2>
+                    <h2>Add User</h2>
                     <span className="close" onClick={handleClose}>&times;</span>
                 </div>
                 <div className="form-container-data">
@@ -57,22 +51,10 @@ const AddUser = ({ show, setShowModal, operatorTable }) => {
                         <input
                             type="text"
                             value={name}
-                            password={password}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Enter user name"
                         />
-                        <div className='' style={{ display: "flex", gap: "0.5rem", marginTop: "1rem" }}>
-                            <label htmlFor='currency'>Currency:</label>
-                            <select
-                                value={currency}
-                                onChange={(e) => setCurrency(e.target.value)}   >
-                                <option value="" disabled>Select currency</option>
-                                <option value="USD">USD</option>
-                                <option value="EUR">EUR</option>
-                                <option value="GBP">GBP</option>
-                                {/* Add more currencies as needed */}
-                            </select>
-                        </div>
+
                         <div className='form-submit-btn'>
                             <button type="submit">Send Data</button>
                         </div>

@@ -11,6 +11,7 @@ export const getCaller = async (url) => {
     return response
 }
 export const postCaller = async (url, data) => {
+    
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/${url}`, {
         method: 'POST',
         headers: {
