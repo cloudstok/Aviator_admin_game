@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 import './login.css'
 import Swal from "sweetalert2";
 
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { FiEyeOff, FiEye } from 'react-icons/fi'
-import * as Yup from 'yup';
 import { MdLockOutline } from "react-icons/md";
 import { ROUTES } from '../routes/Routes';
 import { RiAdminLine } from "react-icons/ri";
@@ -23,6 +22,8 @@ const Login = ({ toggleForm }) => {
   //     .required('Password is Required'),
 
   // });
+  const userRole = localStorage.getItem('role')
+
   const formik = useFormik({
     initialValues: {
       user_id: "",
@@ -30,6 +31,7 @@ const Login = ({ toggleForm }) => {
     },
 
     // validationSchema:validationLogin,
+
     onSubmit: async (values) => {
       let url = `${process.env.REACT_APP_BASE_URL}/superAdmin/login`
       const res = await (await fetch(url, {
@@ -60,7 +62,12 @@ const Login = ({ toggleForm }) => {
       } else {
         localStorage.setItem('token', res.Token)
         localStorage.setItem('role', res.role)
-        navigate(ROUTES.DASHBOARD)
+        if (localStorage.getItem('role') === "SUPERADMIN") {
+          navigate(ROUTES.DASHBOARD);
+        }
+        else {
+          navigate(ROUTES.USERLIST)
+        }
       }
 
     },
@@ -124,12 +131,7 @@ const Login = ({ toggleForm }) => {
                 <div className="">
                   <button type='submit'>Sign In</button>
                 </div>
-                {/* <div >
-                  <Link to className='link-button' onClick={()=> toggleForm()}>For Operator</Link>
-                </div> */}
-                {/* <div className="" onClick={()=> navigate(ROUTES.OPERATORLOGIN)}>
-                  <button type='submit'> Operator</button>
-                </div> */}
+
               </div>
             </div>
           </form>

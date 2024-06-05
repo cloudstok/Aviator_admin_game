@@ -57,13 +57,6 @@ function App() {
             <Route exact path={ROUTES.OPERATORLOGIN} element={<OperatorLogin />} />
             <Route exact path={ROUTES.PROFILE} element={<Profile />} />
 
-
-
-
-
-
-
-
           </Route>
 
         </Routes>

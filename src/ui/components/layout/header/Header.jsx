@@ -42,7 +42,7 @@ const Header = ({ toggleOpen, setToggleOpen }) => {
             <div className="header-icon">
                <div className="header-logo">
                   <div className="login-logo">
-                     <h1><samp style={{ color: "#38ca07" }}>Avi</samp><span style={{ color: "red" }}>ator</span></h1>
+                     <h1><samp style={{ color: "#0080DC" }}>Avi</samp><span style={{ color: "red" }}>ator</span></h1>
                   </div>
                </div>
             </div>

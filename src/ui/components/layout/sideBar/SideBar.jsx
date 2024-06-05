@@ -23,6 +23,8 @@ const SideBar = () => {
   const logoutHandle = () => {
     // const res = postCaller(`api/v1/logout?token=${token}`)
     localStorage.clear('token')
+    localStorage.clear('role')
+
 
     navigate('/')
   }

@@ -21,7 +21,7 @@ const Admin = () => {
   const [showModal, setShowModal] = useState(false);
   const [password, setPassword] = useState(false)
   const [operatorData, setOperatorData] = useState([]);
-  const [isEditButtonClicked, setIsEditButtonClicked] = useState(false);
+  const [isEditButtonClicked] = useState(false);
   const [visibleRow, setVisibleRow] = useState(null);
   const [userId, setUserId] = useState("")
   const [currentPage, setCurrentPage] = useState(1);
@@ -142,16 +142,17 @@ const Admin = () => {
                     <td>
                       <Button name="Game List" routes={() => navigate(ROUTES.GAMELIST)} />
                     </td>
+
                     <td data-label="MARKET" height={70} onClick={() => unable(el)}>
                       <TogglePage defaultChecked={el?.is_active} />
                     </td>
 
                     <td>
                       <div className='action-section'>
-                        <button type='button' style={{ color: isEditButtonClicked ? '#007bff' : 'red' }}>
+                        <button type='button' style={{ color: isEditButtonClicked ? '#007bff' : 'blue' }}>
                           <MdEdit />
                         </button>
-                        <button type='button' onClick={() => deleteAdmin(el?.user_id)}>
+                        <button type='button' style={{ color: isEditButtonClicked ? '#007bff' : 'Red' }} onClick={() => deleteAdmin(el?.user_id)}>
                           <MdDelete />
                         </button>
                       </div>
@@ -169,7 +170,7 @@ const Admin = () => {
               <AddOperatorModal show={showModal} setShowModal={setShowModal} operatorTable={operatorTable} />
             )}
             {password && (
-              <ResetPassword password={password} setPassword={setPassword} userId= {userId} />
+              <ResetPassword password={password} setPassword={setPassword} userId={userId} />
             )}
             <PaginationComponent
               currentPage={currentPage}

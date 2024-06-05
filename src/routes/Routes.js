@@ -10,5 +10,5 @@ export const ROUTES = {
     USERLIST:"/userList",
     GAMELIST:"/gameList",
     OPERATORLOGIN:"/operatorLogin",
-    PROFILE: "/profile"
+    PROFILE: "/profile",
 }

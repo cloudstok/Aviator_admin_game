@@ -16,6 +16,9 @@
   justify-content: space-between;
   align-items: center;
 }
+.add-operator h2 {
+  color: var(--btn-color);
+}
 
 .modal.show {
   display: block;

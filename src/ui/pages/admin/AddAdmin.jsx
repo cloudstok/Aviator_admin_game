@@ -7,7 +7,6 @@ import { icon, toastData } from '../../components/toast/Toast';
 import { postCaller } from '../../../services/api';
 
 const success = Swal.mixin(toastData.success);
-const error = Swal.mixin(toastData.error);
 
 const AddAdmin = ({ show, setShowModal, operatorTable }) => {
     const navigate = useNavigate();
