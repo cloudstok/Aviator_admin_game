@@ -166,7 +166,9 @@ const UserList = () => {
                 <tr key={i}>
                   <td>{el.user_id}</td>
                   <td>{el.name}</td>
-                  <td>{el.url}</td>
+                  <td>
+                    <img src={el.url} alt={el.name} style={{ width: '50px', height: '50px' }} />
+                  </td>
                   <td>{el.currency}</td>
                   <td>{el.phone}</td>
                   <td>{el.email}</td>
@@ -212,7 +214,6 @@ const UserList = () => {
         </div>
       </div>
     </div >
-
   );
 };
 

@@ -27,24 +27,14 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          <Route
-            path={ROUTES.LOGIN}
-
-            element={
-              isAuthenticated ? (
-                <Navigate to={ROUTES.DASHBOARD} />
-              ) : (
-                <Login />
-              )
-            }
-          />
+          <Route path={ROUTES.LOGIN} element={isAuthenticated ? (<Navigate to={ROUTES.DASHBOARD} />) : (<Login />)} />
 
           {/* <Route element={<MainLayout />} /> */}
 
           <Route exact path='/' element={<AuthForm />} />
           <Route element={<ProtectedRoute />}>
+          
             <Route exact path={ROUTES.DASHBOARD} element={<Dashboard />} />
-
             <Route exact path={ROUTES.ADMIN} element={<Admin />} />
             {/* <Route exact path={ROUTES.USER} element={<User />} /> */}
             <Route exact path={ROUTES.WALLET} element={<Wallet />} />
