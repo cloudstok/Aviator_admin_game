@@ -11,5 +11,6 @@
 .Button-container :hover {
   background-color: var(--button-hover-color);
   border-radius: 4px;
+  /* box-shadow:inset -10.5em 0 0 0 #ff96ad, inset 10.5em 0 0 0 #ff96ad; */
 }
 

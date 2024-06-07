@@ -61,10 +61,22 @@
   border-radius: 5px;
   cursor: pointer;
   outline: none;
+  position: relative;
+  transition: 0.4s ease-in;
+  z-index: 1;
+}
+.form-submit-btn button::before,
+button::after {
+  position: absolute;
+  content: "";
+  z-index: -1;
 }
 
-button:hover {
+/* button:hover {
   background-color: #0056b3;
+} */
+.form-submit-btn:hover {
+  box-shadow: inset -10.5em 0 0 0 #ff96ab, inset 10.5 0 0 0 #ff96ab;
 }
 
 /* //////////////////////////////////// responsive ///////////////////////////// */
@@ -93,4 +105,3 @@ button:hover {
     max-width: 60%;
   }
 }
-

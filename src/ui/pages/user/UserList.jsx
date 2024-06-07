@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './user.css'
 import { getCaller, postCaller, updateCaller } from '../../../services/api';
 import AddButton from '../../components/button/AddButton';
 import AddUser from './AddUser';
@@ -167,7 +168,7 @@ const UserList = () => {
                   <td>{el.user_id}</td>
                   <td>{el.name}</td>
                   <td>
-                    <img src={el.url} alt={el.name} style={{ width: '50px', height: '50px' }} />
+                    <img src={el.url} alt={el.name} style={{ width: '50px', height: '50px', borderRadius:"50%" }} />
                   </td>
                   <td>{el.currency}</td>
                   <td>{el.phone}</td>

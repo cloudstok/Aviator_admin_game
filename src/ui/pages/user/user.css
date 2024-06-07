@@ -1,0 +1,31 @@
+/* Styling for the container div */
+.currency {
+    margin-bottom: 20px;
+}
+
+/* Basic styling for the label */
+.currency label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Styling for the select box */
+.currency select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+/* Styling for the select box when focused */
+.currency select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+

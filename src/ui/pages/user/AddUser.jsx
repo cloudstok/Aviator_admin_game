@@ -17,7 +17,7 @@ const AddUser = ({ show, setShowModal, userData, edit, setEdit, editData }) => {
         if (edit && editData) {
             formik.setValues({
                 name: editData.name || '',
-                url: editData.url || '',
+                file: editData.url || '',
                 email: editData.email || '',
                 phone: editData.phone || '',
                 currency: editData.currency || '',
@@ -28,7 +28,7 @@ const AddUser = ({ show, setShowModal, userData, edit, setEdit, editData }) => {
     const formik = useFormik({
         initialValues: {
             name: '',
-            url: null,
+            file: null,
             email: '',
             phone: '',
             currency: '',
@@ -36,27 +36,45 @@ const AddUser = ({ show, setShowModal, userData, edit, setEdit, editData }) => {
         },
         validationSchema: Yup.object({
             name: Yup.string().required('User Name is required'),
-            url: Yup.mixed().required("An image is required"),
+            file: Yup.mixed().required("An image is required"),
             email: Yup.string().email('Invalid email format').required('Email is required'),
             phone: Yup.string().matches(/^[0-9]+$/, 'Phone number must be digits only').required('Phone is required'),
             currency: Yup.string().required('Currency is required')
         }),
         onSubmit: async (values, { setSubmitting, resetForm }) => {
+            const formData = new FormData();
+            formData.append("name", values.name)
+            formData.append("file", values.file)
+            formData.append("email", values.email)
+            formData.append("phone", values.phone)
+            formData.append("currency", values.currency)
+            console.log(formData)
             try {
                 if (edit) {
-                    const res = await updateCaller(`admin/users?user_id=${editData.user_id}`, values);
-                    if (res?.status === true) {
-                        success.fire(Object.assign(icon.success, { title: res.msg })).then(() => {
-                            navigate(ROUTES.USERLIST);
-                        });
-                    }
+                    // const res = await updateCaller(`admin/users?user_id=${editData.user_id}`, formData);
+                    // if (res?.status === true) {
+                    //     success.fire(Object.assign(icon.success, { title: res.msg })).then(() => {
+                    //         navigate(ROUTES.USERLIST);
+                    //     });
+                    // }
+                    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/admin/users?user_id=${editData.user_id}`,
+                        {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                            },
+                            body: formData
+                        }).then(response => response.json()).catch(error => console.log(error))
+
                 } else {
-                    const res = await postCaller('admin/users', values);
-                    if (res?.status === true) {
-                        success.fire(Object.assign(icon.success, { title: res.msg })).then(() => {
-                            navigate(ROUTES.USERLIST);
-                        });
-                    }
+                    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/admin/users`,
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                            },
+                            body: formData
+                        }).then(response => response.json()).catch(error => console.log(error))
                 }
                 resetForm();
                 handleClose();
@@ -94,27 +112,31 @@ const AddUser = ({ show, setShowModal, userData, edit, setEdit, editData }) => {
                             onBlur={formik.handleBlur}
                             value={formik.values.name}
                             placeholder="Enter user name"
-                            disabled = {edit}
+                            disabled={edit}
                         />
                         {formik.touched.name && formik.errors.name ? (
                             <div className="error">{formik.errors.name}</div>
                         ) : null}
 
-                        <label htmlFor='url'>Upload Image:</label>
-                        <input
-                            type="file"
-                            id="url"
-                            name="url"
-                            onChange={(event) => {
-                                const file = event.currentTarget.files[0];
-                                formik.setFieldValue("url", file);
-                            }}
-                            onBlur={formik.handleBlur}
-                            placeholder="Upload an image file"
-                        />
-                        {formik.touched.url && formik.errors.url ? (
-                            <div className="error">{formik.errors.url}</div>
-                        ) : null}
+
+                        <div className="form-input-field" >
+                            <label htmlFor=""> Cover Image:</label>
+                            <input type="file"
+                                id="file"
+                                name='docs'
+                                accept='.jpg, .jpeg, .png'
+                                onChange={(e) => {
+                                    formik.setFieldValue('file', e.currentTarget.files[0]);
+                                    console.log(e.currentTarget.files[0])
+                                }}
+                            />
+                            {formik.touched.file && formik.errors.file ? (
+                                <div className="error">{formik.errors.file}</div>
+                            ) : null}
+
+                        </div>
+
+
 
                         <label htmlFor='email'>Email:</label>
                         <input
@@ -144,23 +166,24 @@ const AddUser = ({ show, setShowModal, userData, edit, setEdit, editData }) => {
                             <div className="error">{formik.errors.phone}</div>
                         ) : null}
 
-                        <label htmlFor='currency'>Currency:</label>
-                        <select
-                            id="currency"
-                            name="currency"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.currency}
-                        >
-                            <option value="" disabled>Select currency</option>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                        </select>
-                        {formik.touched.currency && formik.errors.currency ? (
-                            <div className="error">{formik.errors.currency}</div>
-                        ) : null}
-
+                        <div className='currency'>
+                            <label htmlFor='currency'>Currency:</label>
+                            <select
+                                id="currency"
+                                name="currency"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.currency}
+                            >
+                                <option value="" disabled>Select currency</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                            </select>
+                            {formik.touched.currency && formik.errors.currency ? (
+                                <div className="error">{formik.errors.currency}</div>
+                            ) : null}
+                        </div>
                         <div className='form-submit-btn'>
                             <button type="submit" disabled={formik.isSubmitting}>Send Data</button>
                         </div>

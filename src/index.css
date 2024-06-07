@@ -148,4 +148,131 @@ table tbody tr td {
   font-size: 1.5rem;
 }
 
+/* ///////////////////////// data-table-container styling ///////////////////// */
+.bet-container {
+  background-color: var(--table-backgroung-color);
+  padding: 1rem;
+  height: 50%;
+}
+.data-table-container {
+  background-color: var(--head-text-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* / data-h3-container / */
+
+/* ////// search-table-container styling ///////// */
+.search-table-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-h1 {
+  font-size: var(--reguler-font);
+}
+
+/* Style for search container */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.search-container input {
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.result-input {
+  padding: 10px 40px 10px 10px; /* Adjust padding to make space for the icon */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ai-search,
+.ai-close {
+  position: absolute;
+  right: 10px; /* Adjust position as needed */
+  cursor: pointer;
+}
+
+.ai-close {
+  right: 10px; /* Adjust to align with the right side of the input */
+}
+
+.ai-search {
+  right: 10px; /* Adjust to align with the right side of the input */
+}
+
+/* <-----------------Currency-----------------> */
+
+/* Styling for the container div */
+.currency {
+  margin-bottom: 20px;
+}
+
+/* Basic styling for the label */
+.currency label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Styling for the select box */
+.currency select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--text-color);
+  background-color: #fff;
+}
+
+/* Styling for the select box when focused */
+.currency select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+
+
+@media (max-width: 768px) {
+  /* Style for search container */
+  .search-container {
+    width: 65%;
+  }
+  .search-container input[type="text"] {
+    width: 70%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Style for search container */
+  .search-container {
+    width: 65%;
+  }
+  .search-container input[type="text"] {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  /* Style for search container */
+  .search-container {
+    width: 65%;
+  }
+}
+
+
 
